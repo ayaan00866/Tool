@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>FB Automation Dashboard</title>
+    <meta name="description" content="FB Automation Dashboard — built on Replit." />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="FB Automation Dashboard" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-D7KFI62D.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BF3vftBB.css">
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         IRIDESCENT CRYSTAL GLASSMORPHISM THEME v4 — REFERENCE IMAGE MATCH
+         Bright cobalt blue bg · White frosted glass cards · Rainbow prisms
+    ═══════════════════════════════════════════════════════════════ -->
+    <style>
+      /* ── 1. CSS VARIABLE OVERRIDES — vivid cobalt blue palette ── */
+      :root, .dark, :root.dark {
+        --background: 220 85% 38% !important;
+        --foreground: 0 0% 100% !important;
+        --border: 220 60% 65% !important;
+        --card: 220 60% 50% !important;
+        --card-foreground: 0 0% 100% !important;
+        --card-border: 220 60% 70% !important;
+        --sidebar: 220 85% 32% !important;
+        --sidebar-foreground: 0 0% 100% !important;
+        --sidebar-border: 220 60% 62% !important;
+        --sidebar-primary: 195 100% 65% !important;
+        --sidebar-primary-foreground: 220 85% 15% !important;
+        --sidebar-accent: 220 60% 48% !important;
+        --sidebar-accent-foreground: 0 0% 100% !important;
+        --sidebar-ring: 195 100% 65% !important;
+        --popover: 220 80% 36% !important;
+        --popover-foreground: 0 0% 100% !important;
+        --popover-border: 220 60% 65% !important;
+        --primary: 195 100% 65% !important;
+        --primary-foreground: 220 85% 15% !important;
+        --secondary: 220 55% 48% !important;
+        --secondary-foreground: 0 0% 100% !important;
+        --muted: 220 55% 45% !important;
+        --muted-foreground: 210 40% 90% !important;
+        --accent: 220 55% 48% !important;
+        --accent-foreground: 0 0% 100% !important;
+        --input: 220 55% 48% !important;
+        --ring: 195 100% 65% !important;
+        --chart-1: 195 100% 65% !important;
+        --chart-2: 270 100% 75% !important;
+        --chart-3: 150 100% 60% !important;
+        --chart-4: 40 100% 68% !important;
+        --chart-5: 320 100% 72% !important;
+        --shadow-2xs: 0 0 0 1px rgba(255,255,255,0.15) !important;
+        --shadow-xs: 0 0 0 1px rgba(255,255,255,0.2), 0 0 8px 0 rgba(0,80,255,0.15) !important;
+        --shadow-sm: 0 0 0 1px rgba(255,255,255,0.25), 0 0 12px 0 rgba(0,80,255,0.2) !important;
+        --shadow: 0 0 0 1px rgba(255,255,255,0.3), 0 0 20px 0 rgba(0,80,255,0.25) !important;
+        --shadow-md: 0 0 0 1px rgba(255,255,255,0.35), 0 0 28px 0 rgba(0,80,255,0.3) !important;
+        --shadow-lg: 0 0 0 1px rgba(255,255,255,0.4), 0 0 40px 0 rgba(0,80,255,0.35) !important;
+        --shadow-xl: 0 0 0 1px rgba(255,255,255,0.45), 0 0 56px 0 rgba(0,80,255,0.4) !important;
+        --shadow-2xl: 0 0 0 1px rgba(255,255,255,0.5), 0 0 80px 0 rgba(0,80,255,0.45) !important;
+        --elevate-1: rgba(255,255,255,0.08) !important;
+        --elevate-2: rgba(255,255,255,0.14) !important;
+      }
+
+      /* ── 2. BRIGHT VIVID COBALT BLUE — PINNED AS FIXED LAYER ── */
+      /* body::before is fixed, z-index:-1, covers entire viewport.
+         This GUARANTEES the vivid blue shows regardless of what
+         React renders inside — no element can cover a fixed ::before. */
+      html { background: #0033AA !important; }
+      body {
+        background: transparent !important;
+        min-height: 100vh !important;
+      }
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        background:
+          radial-gradient(ellipse 110% 65% at 50% -5%, rgba(140,200,255,0.60) 0%, transparent 50%),
+          radial-gradient(ellipse 75% 55% at 8%  30%, rgba(60,80,220,0.55) 0%, transparent 55%),
+          radial-gradient(ellipse 85% 65% at 92% 20%, rgba(110,40,210,0.45) 0%, transparent 50%),
+          radial-gradient(ellipse 65% 75% at 28% 82%, rgba(0,130,255,0.40) 0%, transparent 55%),
+          radial-gradient(ellipse 55% 65% at 78% 88%, rgba(90,0,210,0.35) 0%, transparent 50%),
+          linear-gradient(170deg, #0033AA 0%, #0055CC 30%, #0066DD 55%, #0044BB 75%, #002299 100%);
+        pointer-events: none;
+      }
+
+      /* ── 3. MAKE ROOT LAYOUT WRAPPERS TRANSPARENT ── */
+      #root > div,
+      #root > div > div,
+      .bg-background, [class*="bg-background"],
+      .bg-\[--color-bg\] {
+        background: transparent !important;
+        background-color: transparent !important;
+        background-image: none !important;
+      }
+
+      /* ── 3b. FORCE ALL TEXT WHITE — readable on deep blue glass ── */
+      #root *, #root *::before, #root *::after {
+        color: inherit;
+      }
+      #root {
+        color: #ffffff !important;
+      }
+      p, span, div, h1, h2, h3, h4, h5, h6, label, li, td, th, a,
+      [class*="text-"], [class*="font-"] {
+        color: #ffffff !important;
+      }
+      /* Muted text — slightly dimmer but still readable */
+      [class*="text-muted"], [class*="text-gray"], [class*="text-slate"],
+      [class*="opacity-"], .text-muted-foreground {
+        color: rgba(200, 220, 255, 0.80) !important;
+      }
+      /* Preserve colored accent text */
+      [class*="text-green"], [class*="text-emerald"] { color: #6ee7b7 !important; }
+      [class*="text-red"], [class*="text-rose"]      { color: #fca5a5 !important; }
+      [class*="text-yellow"], [class*="text-amber"]  { color: #fde68a !important; }
+      [class*="text-blue"], [class*="text-cyan"]     { color: #93c5fd !important; }
+      [class*="text-purple"], [class*="text-violet"] { color: #c4b5fd !important; }
+      /* Links */
+      a { color: #93c5fd !important; }
+      a:hover { color: #e0f2fe !important; }
+
+      /* ── 4. PARTICLE CANVAS ── */
+      #crystal-particles {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        pointer-events: none;
+        z-index: -1;
+      }
+      #root { position: relative; z-index: 1; }
+
+      /* ── 4. GLASS HELPER CLASS (applied by JS observer) — DEEP BLUE GLASS ── */
+      .crystal-glass {
+        background: rgba(5, 25, 90, 0.55) !important;
+        backdrop-filter: blur(22px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(22px) saturate(180%) !important;
+        border: 1px solid rgba(255, 255, 255, 0.18) !important;
+        box-shadow:
+          0 8px 32px rgba(0, 0, 60, 0.35),
+          inset 0 1px 0 rgba(255, 255, 255, 0.20) !important;
+      }
+      .crystal-glass:hover {
+        background: rgba(10, 40, 120, 0.60) !important;
+        border-color: rgba(100, 200, 255, 0.35) !important;
+        box-shadow:
+          0 8px 40px rgba(0, 60, 200, 0.40),
+          0 0 50px rgba(80, 160, 255, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+        transition: all 0.3s ease !important;
+      }
+
+      /* ── 5. GLASSMORPHISM ON CSS-CLASS CARDS — DEEP BLUE GLASS ── */
+      .bg-card, [class*="bg-card"], .card, [data-slot="card"],
+      [class*="rounded"][class*="border"][class*="bg-"] {
+        background: rgba(5, 25, 90, 0.52) !important;
+        backdrop-filter: blur(22px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(22px) saturate(180%) !important;
+        border-color: rgba(255, 255, 255, 0.18) !important;
+        box-shadow:
+          0 8px 32px rgba(0, 0, 60, 0.30),
+          inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+      }
+
+      /* ── 7. GLASS SIDEBAR — white frosted ── */
+      .bg-sidebar, [class*="bg-sidebar"], [data-slot="sidebar"] {
+        background: rgba(0, 40, 140, 0.45) !important;
+        backdrop-filter: blur(28px) saturate(170%) !important;
+        -webkit-backdrop-filter: blur(28px) saturate(170%) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.22) !important;
+      }
+
+      /* ── 8. GLASS MUTED / SECONDARY / ACCENT ── */
+      .bg-muted, [class*="bg-muted"],
+      .bg-secondary, [class*="bg-secondary"],
+      .bg-accent, [class*="bg-accent"] {
+        background: rgba(5, 20, 75, 0.45) !important;
+        backdrop-filter: blur(14px) !important;
+        -webkit-backdrop-filter: blur(14px) !important;
+        border-color: rgba(255, 255, 255, 0.16) !important;
+      }
+
+      /* ── 9. GLASS POPOVER / DROPDOWN / SHEET ── */
+      .bg-popover, [data-slot="popover-content"],
+      [role="menu"], [role="listbox"],
+      [data-slot="command"], [data-slot="sheet-content"] {
+        background: rgba(0, 30, 120, 0.75) !important;
+        backdrop-filter: blur(32px) saturate(200%) !important;
+        -webkit-backdrop-filter: blur(32px) saturate(200%) !important;
+        border: 1px solid rgba(255, 255, 255, 0.28) !important;
+        box-shadow:
+          0 20px 60px rgba(0, 30, 160, 0.45),
+          inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+      }
+
+      /* ── 10. GLASS MODAL / DIALOG ── */
+      [data-slot="dialog-content"], [data-slot="alert-dialog-content"],
+      [role="dialog"] > div {
+        background: rgba(0, 35, 130, 0.80) !important;
+        backdrop-filter: blur(36px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(36px) saturate(180%) !important;
+        border: 1px solid rgba(255, 255, 255, 0.30) !important;
+        box-shadow:
+          0 32px 80px rgba(0, 30, 160, 0.55),
+          inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+      }
+
+      /* ── 11. GLASS INPUTS ── */
+      .bg-input, [data-slot="input"], input, textarea, select {
+        background: rgba(255, 255, 255, 0.12) !important;
+        border-color: rgba(255, 255, 255, 0.28) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        color: #fff !important;
+      }
+      input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.55) !important; }
+      input:focus, textarea:focus, select:focus, [data-slot="input"]:focus {
+        border-color: rgba(120, 220, 255, 0.70) !important;
+        box-shadow: 0 0 0 2px rgba(80, 200, 255, 0.25), 0 0 20px rgba(80, 200, 255, 0.18) !important;
+      }
+
+      /* ── 12. GLASS NAVIGATION / HEADER ── */
+      header, nav, [data-slot="sidebar-header"], [data-slot="nav"] {
+        background: rgba(0, 30, 120, 0.40) !important;
+        backdrop-filter: blur(22px) !important;
+        -webkit-backdrop-filter: blur(22px) !important;
+        border-bottom-color: rgba(255, 255, 255, 0.18) !important;
+      }
+
+      /* ── 13. TOOLTIP GLASS ── */
+      [data-slot="tooltip-content"] {
+        background: rgba(0, 25, 100, 0.88) !important;
+        backdrop-filter: blur(18px) !important;
+        -webkit-backdrop-filter: blur(18px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.28) !important;
+      }
+
+      /* ── 14. CRYSTAL BORDERS ── */
+      .border, [class*="border-border"], [class*="border-card"],
+      [class*="border-white"], [class*="divide-"] > * {
+        border-color: rgba(255, 255, 255, 0.25) !important;
+      }
+
+      /* ── 15. BADGE / PILL GLASS COLOURS ── */
+      .bg-primary\/10, .bg-primary\/20, [class*="bg-primary/"] {
+        background: rgba(120, 220, 255, 0.18) !important;
+        border-color: rgba(120, 220, 255, 0.38) !important;
+      }
+      .bg-green-500\/10, .bg-green-400\/10, .bg-green-500\/20  { background: rgba(80, 255, 160, 0.16) !important; }
+      .bg-red-500\/10, .bg-red-400\/10, .bg-red-500\/20        { background: rgba(255, 100, 100, 0.16) !important; }
+      .bg-yellow-500\/10, .bg-amber-400\/10, .bg-amber-200\/20 { background: rgba(255, 210, 80, 0.16) !important; }
+      .bg-blue-500\/10, .bg-blue-400\/10, .bg-blue-500\/20     { background: rgba(100, 180, 255, 0.16) !important; }
+      .bg-purple-500\/10, .bg-purple-400\/10, .bg-purple-500\/20{ background: rgba(200, 130, 255, 0.16) !important; }
+
+      /* ── 16. TABLE ROW HOVER ── */
+      tbody tr:hover, table tr:hover td { background: rgba(255, 255, 255, 0.10) !important; }
+
+      /* ── 17. ACTIVE SIDEBAR ITEM ── */
+      [data-state="active"], [aria-current="page"], [data-active="true"] {
+        background: rgba(255, 255, 255, 0.16) !important;
+        box-shadow: inset 0 0 14px rgba(120,220,255,0.12), 0 0 18px rgba(80,180,255,0.22) !important;
+        border-color: rgba(120, 220, 255, 0.40) !important;
+      }
+
+      /* ── 18. PRIMARY BUTTON GLOW ── */
+      .bg-primary, [class*="bg-primary"]:not([class*="bg-primary/"]) {
+        box-shadow: 0 0 22px rgba(80,200,255,0.50), 0 0 60px rgba(80,150,255,0.28) !important;
+      }
+      button[class*="bg-primary"], [data-slot="button"][class*="bg-primary"] {
+        box-shadow: 0 0 20px rgba(80,200,255,0.45), 0 4px 16px rgba(80,150,255,0.35) !important;
+      }
+      button[class*="bg-primary"]:hover, [data-slot="button"][class*="bg-primary"]:hover {
+        box-shadow: 0 0 32px rgba(120,230,255,0.60), 0 4px 28px rgba(80,180,255,0.48) !important;
+      }
+
+      /* ── 19. FOOTER ── */
+      #fbt-footer {
+        background: rgba(0, 25, 100, 0.55) !important;
+        backdrop-filter: blur(22px) !important;
+        -webkit-backdrop-filter: blur(22px) !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.18) !important;
+      }
+
+      /* ── 20. SCROLLBAR ── */
+      ::-webkit-scrollbar { width: 6px; height: 6px; }
+      ::-webkit-scrollbar-track { background: rgba(0, 30, 120, 0.3); }
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, rgba(80,200,255,0.65), rgba(180,100,255,0.65));
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, rgba(120,230,255,0.85), rgba(220,140,255,0.85));
+      }
+
+      /* ── 21. SELECTION ── */
+      ::selection { background: rgba(80, 200, 255, 0.38); color: #fff; }
+
+      /* ── 22. RAINBOW SHIMMER EDGE ON CARDS ── */
+      .bg-card::before, [data-slot="card"]::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 5%; right: 5%;
+        height: 1px;
+        background: linear-gradient(90deg,
+          transparent 0%,
+          rgba(255,100,100,0.7) 10%,
+          rgba(255,200,80,0.7) 25%,
+          rgba(80,255,160,0.7) 40%,
+          rgba(80,200,255,0.8) 55%,
+          rgba(160,80,255,0.7) 70%,
+          rgba(255,80,200,0.7) 85%,
+          transparent 100%);
+        pointer-events: none;
+        border-radius: 50%;
+      }
+      .bg-card, [data-slot="card"] { position: relative; overflow: hidden; }
+      /* Rainbow shimmer BOTTOM border on cards */
+      .bg-card::after, [data-slot="card"]::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 5%; right: 5%;
+        height: 1px;
+        background: linear-gradient(90deg,
+          transparent 0%,
+          rgba(80,200,255,0.5) 20%,
+          rgba(160,80,255,0.5) 50%,
+          rgba(255,80,160,0.5) 80%,
+          transparent 100%);
+        pointer-events: none;
+      }
+
+      /* ── 23. ALL DARK HEX ARBITRARY BG CLASSES → deep blue glass ── */
+      [class*="bg-\[#0f1729\]"], [class*="bg-\[#080e1a\]"],
+      [class*="bg-\[#0a1628\]"], [class*="bg-\[#040810\]"],
+      [class*="bg-\[#070d1a\]"], [class*="bg-\[#0c1424\]"],
+      [class*="bg-\[#0a0f1e\]"], [class*="bg-\[#0a0818\]"],
+      [class*="bg-\[#0c0a1e\]"], [class*="bg-\[#0d1020\]"],
+      [class*="bg-\[#0d1528\]"], [class*="bg-\[#0d1f3c\]"],
+      [class*="bg-\[#0d2150\]"], [class*="bg-\[#0f1a35\]"],
+      [class*="bg-\[#100d2a\]"], [class*="bg-\[#12082e\]"],
+      [class*="bg-\[#1a0533\]"], [class*="bg-\[#1a0d2e\]"],
+      [class*="bg-\[#1a2744\]"], [class*="bg-\[#060e20\]"],
+      [class*="bg-\[#071428\]"], [class*="bg-\[#0a1830\]"] {
+        background: rgba(5, 25, 90, 0.55) !important;
+        backdrop-filter: blur(22px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(22px) saturate(180%) !important;
+        border: 1px solid rgba(255, 255, 255, 0.18) !important;
+        box-shadow:
+          0 8px 32px rgba(0, 0, 60, 0.30),
+          inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+      }
+
+      /* ── 24. ALL DARK INLINE STYLE SELECTORS → deep blue glass ── */
+      [style*="#0f1729"], [style*="#080e1a"], [style*="#0a1628"],
+      [style*="#040810"], [style*="#070d1a"], [style*="#0c1424"],
+      [style*="#0a0f1e"], [style*="#0a0818"], [style*="#0c0a1e"],
+      [style*="#0d1020"], [style*="#0d1528"], [style*="#0d1f3c"],
+      [style*="#0d2150"], [style*="#0f1a35"], [style*="#100d2a"],
+      [style*="#12082e"], [style*="#1a0533"], [style*="#1a0d2e"],
+      [style*="#1a2744"], [style*="#060e20"], [style*="#071428"],
+      [style*="#0a1830"], [style*="#0d0d1a"], [style*="#0d2a0d"],
+      [style*="#0d3320"], [style*="#040d07"], [style*="#071a0f"],
+      [style*="#0a2e18"] {
+        background: rgba(5, 25, 90, 0.55) !important;
+        backdrop-filter: blur(22px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(22px) saturate(180%) !important;
+        border-color: rgba(255, 255, 255, 0.18) !important;
+        box-shadow:
+          0 8px 32px rgba(0, 0, 60, 0.30),
+          inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+      }
+
+      /* ── 25. MOBILE SIDEBAR OVERLAY ── */
+      [class*="fixed"][class*="inset-0"],
+      [class*="fixed"][class*="z-40"][class*="bg-black"] {
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+      }
+      [class*="fixed"][class*="top-0"][class*="left-0"][class*="h-full"],
+      [class*="fixed"][class*="z-50"][class*="flex"][class*="flex-col"] {
+        background: rgba(0, 30, 120, 0.78) !important;
+        backdrop-filter: blur(32px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(32px) saturate(180%) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.22) !important;
+        box-shadow: 8px 0 48px rgba(0, 40, 200, 0.40) !important;
+      }
+
+      /* ── 26. TOOL LIBRARY CATEGORY ROWS ── */
+      [class*="rounded-2xl"][class*="px-5"][class*="py-4"],
+      [class*="w-full"][class*="flex"][class*="items-center"][class*="gap-3"][class*="rounded-2xl"] {
+        background: rgba(5, 25, 90, 0.52) !important;
+        backdrop-filter: blur(22px) !important;
+        -webkit-backdrop-filter: blur(22px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.18) !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 60, 0.28), inset 0 1px 0 rgba(255,255,255,0.15) !important;
+      }
+      [class*="rounded-2xl"][class*="px-5"][class*="py-4"]:hover,
+      [class*="w-full"][class*="flex"][class*="items-center"][class*="gap-3"][class*="rounded-2xl"]:hover {
+        background: rgba(10, 40, 120, 0.62) !important;
+        border-color: rgba(100, 200, 255, 0.35) !important;
+        box-shadow: 0 6px 28px rgba(0, 60, 200, 0.38), inset 0 1px 0 rgba(255,255,255,0.22) !important;
+      }
+
+      /* ── 27. INDIVIDUAL TOOL CARDS ── */
+      [class*="rounded"][class*="overflow-hidden"],
+      [class*="rounded-xl"][class*="border"],
+      [class*="rounded-2xl"][class*="border"][class*="overflow"] {
+        background: rgba(5, 25, 90, 0.52) !important;
+        backdrop-filter: blur(22px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(22px) saturate(180%) !important;
+        border-color: rgba(255, 255, 255, 0.18) !important;
+        box-shadow: 0 6px 28px rgba(0, 0, 60, 0.28), inset 0 1px 0 rgba(255,255,255,0.15) !important;
+      }
+
+      /* ── 28. HOME PAGE FEATURE CARDS ── */
+      [class*="rounded-3xl"][class*="border"],
+      [class*="rounded-2xl"][class*="p-6"][class*="border"],
+      [class*="rounded-2xl"][class*="p-5"][class*="border"] {
+        background: rgba(5, 25, 95, 0.55) !important;
+        backdrop-filter: blur(26px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(26px) saturate(180%) !important;
+        border-color: rgba(255, 255, 255, 0.20) !important;
+        box-shadow: 0 12px 48px rgba(0, 0, 60, 0.32), inset 0 1px 0 rgba(255,255,255,0.18) !important;
+      }
+
+      /* ── 29. STAT BADGES ── */
+      [class*="flex"][class*="items-center"][class*="gap"][class*="rounded"][class*="p-"] {
+        background: rgba(5, 20, 75, 0.48) !important;
+        backdrop-filter: blur(14px) !important;
+        -webkit-backdrop-filter: blur(14px) !important;
+        border-color: rgba(255, 255, 255, 0.16) !important;
+      }
+
+      /* ── 30. SIDEBAR NAV ITEMS (desktop) ── */
+      [class*="px-6"][class*="py-5"][class*="flex"][class*="items-center"] { transition: background 0.2s !important; }
+      [class*="px-6"][class*="py-5"][class*="flex"][class*="items-center"]:hover {
+        background: rgba(255, 255, 255, 0.10) !important;
+      }
+
+      /* ── 31. CARD IMAGE SECTION — blur hatao, image saaf dikhe ── */
+      /* Koi bhi div jiske andar directly img ho — uska backdrop-filter off */
+      [class*="rounded"]:has(> img),
+      [class*="overflow-hidden"]:has(> img),
+      [class*="relative"]:has(> img) {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: transparent !important;
+      }
+      /* Img khud bhi clear rahe */
+      [class*="rounded"] img,
+      [class*="overflow-hidden"] img,
+      [class*="card"] img {
+        filter: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        opacity: 1 !important;
+      }
+    </style>
+
+    <!-- Crystal Glass MutationObserver — luminance-aware, covers ALL dark surfaces -->
+    <script>
+      (function() {
+        var GLASS_BG  = 'rgba(5,25,90,0.55)';
+        var GLASS_BDF = 'blur(22px) saturate(180%)';
+        var GLASS_BSH = '0 8px 32px rgba(0,0,60,0.30),inset 0 1px 0 rgba(255,255,255,0.18)';
+
+        // Every dark hex color found in the app bundle
+        var DARK_SET = new Set([
+          '#000','#040810','#040d07','#060e20','#070d1a','#071428','#071a0f',
+          '#080e1a','#0a0818','#0a0f1e','#0a1628','#0a1830','#0a2e18',
+          '#0c0a1e','#0c1424','#0d0d1a','#0d1020','#0d1528','#0d1f3c',
+          '#0d2150','#0d2a0d','#0d3320','#0f1729','#0f1a35','#100d2a',
+          '#12082e','#1a0533','#1a0d2e','#1a2744'
+        ]);
+
+        // Parse any CSS color string → { r, g, b } or null
+        function parseColor(str) {
+          if (!str) return null;
+          var s = str.trim().toLowerCase().replace(/\s+/g,'');
+          // hex 3/6/8
+          var h = s.match(/^#([0-9a-f]{3,8})/);
+          if (h) {
+            var v = h[1];
+            if (v.length === 3) return { r: parseInt(v[0]+v[0],16), g: parseInt(v[1]+v[1],16), b: parseInt(v[2]+v[2],16) };
+            if (v.length >= 6)  return { r: parseInt(v.slice(0,2),16), g: parseInt(v.slice(2,4),16), b: parseInt(v.slice(4,6),16) };
+          }
+          // rgb/rgba
+          var rgb = s.match(/rgba?\((\d+),(\d+),(\d+)/);
+          if (rgb) return { r: +rgb[1], g: +rgb[2], b: +rgb[3] };
+          return null;
+        }
+
+        function luminance(c) {
+          return c ? 0.299*c.r + 0.587*c.g + 0.114*c.b : 999;
+        }
+
+        // Check if a CSS background string is "dark"
+        function isDarkBg(str) {
+          if (!str || str === 'transparent' || str === 'none' || str === 'initial' || str === 'inherit') return false;
+          var s = str.toLowerCase();
+          // Direct hex match (fast path)
+          for (var hex of DARK_SET) { if (s.indexOf(hex) !== -1) return true; }
+          // Luminance check on extracted color
+          var c = parseColor(s.replace(/linear-gradient[^)]+\)/,'').replace(/radial-gradient[^)]+\)/,''));
+          if (c && luminance(c) < 42) return true;
+          // For gradients: check first color stop
+          var stops = str.match(/#[0-9a-fA-F]{3,8}|rgba?\([^)]+\)/g);
+          if (stops) {
+            for (var i = 0; i < Math.min(stops.length, 2); i++) {
+              var sc = parseColor(stops[i]);
+              if (sc && luminance(sc) < 42) return true;
+            }
+          }
+          return false;
+        }
+
+        // Elements to NEVER glassify (their dark bg is intentional accent)
+        function isSkip(el) {
+          var tag = el.tagName;
+          if (tag === 'CANVAS' || tag === 'SVG' || tag === 'IMG' || tag === 'VIDEO') return true;
+          if (tag === 'BUTTON' && el.style.background && el.style.background.indexOf('linear-gradient') !== -1) return true;
+          // Skip tiny colored icon badges (small w+h)
+          var w = el.offsetWidth, h = el.offsetHeight;
+          if (w > 0 && w < 50 && h > 0 && h < 50) return true;
+          // Skip any div that directly contains an IMG — card image wrapper
+          if (el.querySelector && el.querySelector(':scope > img')) return true;
+          return false;
+        }
+
+        function applyGlass(el) {
+          el.style.setProperty('background', GLASS_BG, 'important');
+          el.style.setProperty('backdrop-filter', GLASS_BDF, 'important');
+          el.style.setProperty('-webkit-backdrop-filter', GLASS_BDF, 'important');
+          el.style.setProperty('box-shadow', GLASS_BSH, 'important');
+          var existingBorder = el.style.border;
+          if (!existingBorder || existingBorder === 'none' || existingBorder === '') {
+            el.style.setProperty('border', '1px solid rgba(255,255,255,0.28)', 'important');
+          } else {
+            el.style.setProperty('border-color', 'rgba(255,255,255,0.28)', 'important');
+          }
+          el.setAttribute('data-crystal', '1');
+        }
+
+        function glassify(el) {
+          if (!el || el.nodeType !== 1 || isSkip(el)) return;
+          if (el.getAttribute('data-crystal')) return; // already done
+          var bg  = el.style.background;
+          var bgc = el.style.backgroundColor;
+          if (isDarkBg(bg) || isDarkBg(bgc)) applyGlass(el);
+        }
+
+        // Deep scan: also check computed style for elements WITHOUT inline style
+        // (catches Tailwind arbitrary-value classes like bg-[#0a0f1e])
+        function glassifyComputed(el) {
+          if (!el || el.nodeType !== 1 || isSkip(el)) return;
+          if (el.getAttribute('data-crystal')) return;
+          if (el.style.background || el.style.backgroundColor) return; // handled by glassify()
+          // Only check elements that have a class containing bg-[# pattern
+          var cls = el.className || '';
+          if (typeof cls !== 'string') return;
+          if (cls.indexOf('bg-[#') !== -1 || cls.indexOf('bg-[--') !== -1) {
+            var comp = window.getComputedStyle(el).backgroundColor;
+            if (isDarkBg(comp)) applyGlass(el);
+          }
+        }
+
+        function scanSubtree(root) {
+          var all = (root || document).querySelectorAll('[style], [class*="bg-[#"]');
+          for (var i = 0; i < all.length; i++) {
+            glassify(all[i]);
+            glassifyComputed(all[i]);
+          }
+        }
+
+        // Watch React DOM mutations
+        var pending = false;
+        var queue = [];
+        function flush() {
+          pending = false;
+          var batch = queue.splice(0, queue.length);
+          for (var i = 0; i < batch.length; i++) {
+            var el = batch[i];
+            glassify(el);
+            glassifyComputed(el);
+            if (el.querySelectorAll) {
+              var kids = el.querySelectorAll('[style], [class*="bg-[#"]');
+              for (var k = 0; k < kids.length; k++) { glassify(kids[k]); glassifyComputed(kids[k]); }
+            }
+          }
+        }
+
+        var observer = new MutationObserver(function(mutations) {
+          for (var i = 0; i < mutations.length; i++) {
+            var m = mutations[i];
+            if (m.type === 'attributes') queue.push(m.target);
+            if (m.type === 'childList') {
+              for (var j = 0; j < m.addedNodes.length; j++) {
+                if (m.addedNodes[j].nodeType === 1) queue.push(m.addedNodes[j]);
+              }
+            }
+          }
+          if (!pending) { pending = true; requestAnimationFrame(flush); }
+        });
+
+        function start() {
+          observer.observe(document.body, {
+            childList: true, subtree: true,
+            attributes: true, attributeFilter: ['style', 'class']
+          });
+          scanSubtree(document);
+          // Re-scan after route changes (React SPA)
+          setTimeout(function() { scanSubtree(document); }, 600);
+          setTimeout(function() { scanSubtree(document); }, 1500);
+          setTimeout(function() { scanSubtree(document); }, 3000);
+        }
+
+        if (document.body) { start(); }
+        else { document.addEventListener('DOMContentLoaded', start); }
+
+        // Re-scan on route change (SPA navigation)
+        var _push = history.pushState.bind(history);
+        history.pushState = function() {
+          _push.apply(history, arguments);
+          setTimeout(function() { scanSubtree(document); }, 300);
+          setTimeout(function() { scanSubtree(document); }, 800);
+        };
+        window.addEventListener('popstate', function() {
+          setTimeout(function() { scanSubtree(document); }, 300);
+          setTimeout(function() { scanSubtree(document); }, 800);
+        });
+      })();
+    </script>
+
+    <style>
+      #fbt-footer {
+        display: none;
+        font-family: 'Inter', sans-serif;
+        background: transparent;
+        border-top: 1px solid rgba(99,102,241,0.15);
+        padding: 32px 20px 0;
+        color: #cbd5e1;
+      }
+
+      /* Top row: brand + columns */
+      .fbt-top {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 28px;
+        margin-bottom: 28px;
+      }
+
+      /* Brand + social */
+      .fbt-brand { flex: 1 1 160px; min-width: 150px; }
+      .fbt-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      .fbt-logo-icon {
+        width: 36px; height: 36px; border-radius: 10px;
+        background: #1877F2;
+        display: flex; align-items: center; justify-content: center;
+        flex-shrink: 0;
+      }
+      .fbt-logo-text { font-size: 18px; font-weight: 800; color: #f1f5f9; }
+      .fbt-logo-text span { color: #818cf8; }
+      .fbt-tagline { font-size: 12px; color: #64748b; line-height: 1.6; margin-bottom: 16px; max-width: 180px; }
+
+      /* Social icons */
+      .fbt-socials { display: flex; gap: 10px; }
+      .fbt-soc {
+        width: 34px; height: 34px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        background: rgba(255,255,255,0.07);
+        border: 1px solid rgba(255,255,255,0.1);
+        transition: background 0.2s, transform 0.2s;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .fbt-soc:hover { background: rgba(255,255,255,0.14); transform: scale(1.08); }
+
+      /* Link columns */
+      .fbt-cols {
+        display: flex;
+        flex: 2 1 340px;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .fbt-col { flex: 1 1 90px; min-width: 80px; }
+      .fbt-col h4 {
+        font-size: 11px;
+        font-weight: 700;
+        color: #e2e8f0;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+      }
+      .fbt-col ul { list-style: none; padding: 0; margin: 0; }
+      .fbt-col ul li { margin-bottom: 9px; }
+      .fbt-col ul li a {
+        font-size: 12px;
+        color: #64748b;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .fbt-col ul li a:hover { color: #818cf8; }
+
+      /* Copyright bar */
+      .fbt-copy-bar {
+        border-top: 1px solid rgba(255,255,255,0.07);
+        padding: 14px 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .fbt-copy-text { font-size: 11px; color: #334155; }
+      .fbt-made {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(99,102,241,0.12);
+        border: 1px solid rgba(99,102,241,0.25);
+        border-radius: 999px;
+        padding: 6px 14px;
+        font-size: 11px;
+        font-weight: 600;
+        color: #94a3b8;
+      }
+      .fbt-made .heart { color: #ef4444; font-size: 13px; }
+
+      /* Auth page patches */
+      #fbt-back-btn {
+        position: fixed;
+        top: 16px; left: 16px;
+        z-index: 9999;
+        display: none;
+        align-items: center;
+        gap: 6px;
+        background: rgba(99,102,241,0.15);
+        border: 1px solid rgba(99,102,241,0.35);
+        border-radius: 10px;
+        padding: 8px 14px;
+        color: #a5b4fc;
+        font-family: 'Inter', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        backdrop-filter: blur(8px);
+        transition: background 0.2s;
+      }
+      #fbt-back-btn:hover { background: rgba(99,102,241,0.28); }
+      #fbt-auth-icon {
+        width: 80px; height: 80px;
+        border-radius: 20px;
+        display: flex; align-items: center; justify-content: center;
+        margin: 0 auto 4px;
+        box-shadow: 0 0 32px rgba(99,102,241,0.35);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating particle canvas -->
+    <canvas id="crystal-particles"></canvas>
+
+    <div id="root"></div>
+
+    <div id="fbt-footer">
+
+      <!-- Top: brand + nav columns -->
+      <div class="fbt-top">
+
+        <!-- Brand -->
+        <div class="fbt-brand">
+          <div class="fbt-logo">
+            <div class="fbt-logo-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </div>
+            <div class="fbt-logo-text">Facebook<span>Toolz</span></div>
+          </div>
+          <p class="fbt-tagline">Powerful Facebook automation tools for serious power users.</p>
+          <div class="fbt-socials">
+            <!-- Facebook -->
+            <a href="#" class="fbt-soc" title="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#1877F2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <!-- Telegram -->
+            <a href="#" class="fbt-soc" title="Telegram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#26A5E4"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8l-1.68 7.92c-.12.56-.45.7-.91.43l-2.52-1.86-1.21 1.17c-.13.13-.25.25-.51.25l.18-2.59 4.69-4.23c.2-.18-.05-.28-.32-.1L7.87 14.35 5.4 13.6c-.55-.17-.56-.55.12-.82l8.99-3.47c.46-.17.86.11.71.82l-.58-.13z"/></svg>
+            </a>
+            <!-- WhatsApp -->
+            <a href="#" class="fbt-soc" title="WhatsApp">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.985-1.309A9.954 9.954 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+            </a>
+            <!-- Instagram -->
+            <a href="#" class="fbt-soc" title="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="url(#ig-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <defs><linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#e6683c"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs>
+                <rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Nav columns -->
+        <div class="fbt-cols">
+          <div class="fbt-col">
+            <h4>Platform</h4>
+            <ul>
+              <li><a href="/session">Dashboard</a></li>
+              <li><a href="/tools">Tool Library</a></li>
+              <li><a href="/servers">Server Status</a></li>
+              <li><a href="/activity">Activity Logs</a></li>
+            </ul>
+          </div>
+          <div class="fbt-col">
+            <h4>Account</h4>
+            <ul>
+              <li><a href="/register">Register</a></li>
+              <li><a href="/login">Login</a></li>
+              <li><a href="/account">My Profile</a></li>
+              <li><a href="/account">Change Password</a></li>
+            </ul>
+          </div>
+          <div class="fbt-col">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#">Contact Admin</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Use</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copyright bar -->
+      <div class="fbt-copy-bar">
+        <span class="fbt-copy-text">© 2026 FacebookToolz — All rights reserved.</span>
+        <div class="fbt-made">
+          Made with <span class="heart">♥</span> by Ayan ;)
+        </div>
+      </div>
+
+    </div><!-- /#fbt-footer -->
+
+    <!-- Back button for auth pages -->
+    <button id="fbt-back-btn" onclick="history.back()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Back
+    </button>
+
+    <!-- ── CRYSTAL PRISM PARTICLE SYSTEM — matches reference image ── -->
+    <script>
+      (function() {
+        var canvas = document.getElementById('crystal-particles');
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d');
+        var W, H, t = 0;
+
+        function resize() {
+          W = canvas.width = window.innerWidth;
+          H = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', function() { resize(); initAll(); });
+        resize();
+
+        /* ── Rainbow prism streak colors ── */
+        var RAINBOW = [
+          [255,80,80],   // red
+          [255,160,40],  // orange
+          [255,240,60],  // yellow
+          [80,255,140],  // green
+          [60,220,255],  // cyan
+          [100,140,255], // blue
+          [200,80,255],  // violet
+          [255,80,200],  // pink
+        ];
+
+        /* ── Crystal gem: 3D-look diamond polygon ── */
+        function drawCrystal(cx, cy, size, rot, alpha, hue) {
+          ctx.save();
+          ctx.translate(cx, cy);
+          ctx.rotate(rot);
+          ctx.globalAlpha = alpha;
+
+          // Outer diamond shape
+          var pts = [
+            [0, -size],
+            [size * 0.55, -size * 0.2],
+            [size * 0.38, size * 0.7],
+            [0, size * 0.95],
+            [-size * 0.38, size * 0.7],
+            [-size * 0.55, -size * 0.2],
+          ];
+
+          // Fill with iridescent gradient
+          var grad = ctx.createLinearGradient(-size, -size, size * 0.5, size);
+          grad.addColorStop(0,   'rgba(255,255,255,0.55)');
+          grad.addColorStop(0.2, 'rgba(' + RAINBOW[hue % 8].join(',') + ',0.40)');
+          grad.addColorStop(0.5, 'rgba(' + RAINBOW[(hue+2) % 8].join(',') + ',0.25)');
+          grad.addColorStop(0.7, 'rgba(' + RAINBOW[(hue+4) % 8].join(',') + ',0.35)');
+          grad.addColorStop(1,   'rgba(255,255,255,0.15)');
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.moveTo(pts[0][0], pts[0][1]);
+          for (var i = 1; i < pts.length; i++) ctx.lineTo(pts[i][0], pts[i][1]);
+          ctx.closePath();
+          ctx.fill();
+
+          // Inner highlight facet (top-left bright face)
+          ctx.beginPath();
+          ctx.moveTo(0, -size);
+          ctx.lineTo(size * 0.55, -size * 0.2);
+          ctx.lineTo(0, 0);
+          ctx.lineTo(-size * 0.55, -size * 0.2);
+          ctx.closePath();
+          ctx.fillStyle = 'rgba(255,255,255,0.20)';
+          ctx.fill();
+
+          // Center bright line
+          ctx.beginPath();
+          ctx.moveTo(0, -size * 0.1);
+          ctx.lineTo(0, size * 0.6);
+          var lg = ctx.createLinearGradient(0, -size * 0.1, 0, size * 0.6);
+          lg.addColorStop(0, 'rgba(255,255,255,0.55)');
+          lg.addColorStop(1, 'rgba(255,255,255,0)');
+          ctx.strokeStyle = lg;
+          ctx.lineWidth = size * 0.06;
+          ctx.stroke();
+
+          // Edge glow
+          ctx.beginPath();
+          ctx.moveTo(pts[0][0], pts[0][1]);
+          for (var j = 1; j < pts.length; j++) ctx.lineTo(pts[j][0], pts[j][1]);
+          ctx.closePath();
+          ctx.strokeStyle = 'rgba(255,255,255,0.25)';
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+
+          ctx.globalAlpha = 1;
+          ctx.restore();
+        }
+
+        /* ── Radial rainbow prism streak (like reference image light bursts) ── */
+        function drawPrismBurst(cx, cy, len, angle, alpha) {
+          ctx.save();
+          ctx.globalAlpha = alpha;
+          ctx.translate(cx, cy);
+
+          for (var i = 0; i < 8; i++) {
+            var a = angle + (i / 8) * Math.PI * 2;
+            var rgb = RAINBOW[i];
+            var grad = ctx.createLinearGradient(0, 0,
+              Math.cos(a) * len, Math.sin(a) * len);
+            grad.addColorStop(0, 'rgba(' + rgb.join(',') + ',0.65)');
+            grad.addColorStop(0.4, 'rgba(' + rgb.join(',') + ',0.22)');
+            grad.addColorStop(1, 'rgba(' + rgb.join(',') + ',0)');
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(Math.cos(a) * len, Math.sin(a) * len);
+            ctx.strokeStyle = grad;
+            ctx.lineWidth = 1.8;
+            ctx.stroke();
+          }
+          ctx.globalAlpha = 1;
+          ctx.restore();
+        }
+
+        /* ── Floating sparkle dot ── */
+        function drawSparkle(x, y, r, rgb, alpha) {
+          var grd = ctx.createRadialGradient(x, y, 0, x, y, r * 5);
+          grd.addColorStop(0, 'rgba(' + rgb.join(',') + ',' + alpha + ')');
+          grd.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = grd;
+          ctx.beginPath();
+          ctx.arc(x, y, r * 5, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = 'rgba(255,255,255,' + Math.min(alpha * 2.5, 0.9) + ')';
+          ctx.beginPath();
+          ctx.arc(x, y, r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        /* ── Scene objects ── */
+        var gems = [], bursts = [], sparkles = [];
+
+        function initAll() {
+          gems = [];
+          bursts = [];
+          sparkles = [];
+
+          // Large crystal gems (like top of reference image)
+          for (var i = 0; i < 7; i++) {
+            gems.push({
+              x: Math.random() * W,
+              y: Math.random() * H * 0.7,
+              size: Math.random() * 38 + 16,
+              rot: Math.random() * Math.PI * 2,
+              rotSpeed: (Math.random() - 0.5) * 0.003,
+              vx: (Math.random() - 0.5) * 0.18,
+              vy: (Math.random() - 0.5) * 0.18 - 0.05,
+              alpha: Math.random() * 0.55 + 0.25,
+              hue: Math.floor(Math.random() * 8),
+              pulse: Math.random() * Math.PI * 2,
+              pulseSpd: Math.random() * 0.012 + 0.005,
+            });
+          }
+
+          // Small fragment gems
+          for (var j = 0; j < 12; j++) {
+            gems.push({
+              x: Math.random() * W,
+              y: Math.random() * H,
+              size: Math.random() * 10 + 5,
+              rot: Math.random() * Math.PI * 2,
+              rotSpeed: (Math.random() - 0.5) * 0.008,
+              vx: (Math.random() - 0.5) * 0.22,
+              vy: (Math.random() - 0.5) * 0.22 - 0.04,
+              alpha: Math.random() * 0.35 + 0.10,
+              hue: Math.floor(Math.random() * 8),
+              pulse: Math.random() * Math.PI * 2,
+              pulseSpd: Math.random() * 0.018 + 0.008,
+            });
+          }
+
+          // Rainbow prism bursts (stationary glowing sources like in ref)
+          bursts.push({ x: W * 0.5, y: H * 0.12, len: Math.min(W,H) * 0.55, alpha: 0.18, angle: 0 });
+          bursts.push({ x: W * 0.18, y: H * 0.35, len: Math.min(W,H) * 0.32, alpha: 0.10, angle: 0.4 });
+          bursts.push({ x: W * 0.82, y: H * 0.28, len: Math.min(W,H) * 0.28, alpha: 0.09, angle: 0.8 });
+          bursts.push({ x: W * 0.65, y: H * 0.75, len: Math.min(W,H) * 0.22, alpha: 0.07, angle: 1.2 });
+          bursts.push({ x: W * 0.25, y: H * 0.82, len: Math.min(W,H) * 0.18, alpha: 0.07, angle: 0.6 });
+
+          // Sparkle particles
+          for (var k = 0; k < 60; k++) {
+            sparkles.push({
+              x: Math.random() * W,
+              y: Math.random() * H,
+              r: Math.random() * 1.6 + 0.3,
+              vx: (Math.random() - 0.5) * 0.20,
+              vy: (Math.random() - 0.5) * 0.20 - 0.06,
+              rgb: RAINBOW[Math.floor(Math.random() * 8)],
+              alpha: Math.random() * 0.45 + 0.12,
+              pulse: Math.random() * Math.PI * 2,
+              pulseSpd: Math.random() * 0.018 + 0.006,
+            });
+          }
+        }
+        initAll();
+
+        function animate() {
+          ctx.clearRect(0, 0, W, H);
+          t++;
+
+          // 1. Draw rainbow prism bursts (background)
+          bursts.forEach(function(b) {
+            b.angle += 0.0015;
+            var pulse = 0.88 + 0.12 * Math.sin(t * 0.008 + b.x);
+            drawPrismBurst(b.x, b.y, b.len * pulse, b.angle, b.alpha);
+          });
+
+          // 2. Draw sparkle particles
+          sparkles.forEach(function(s) {
+            s.pulse += s.pulseSpd;
+            var a = s.alpha * (0.65 + 0.35 * Math.sin(s.pulse));
+            s.x += s.vx; s.y += s.vy;
+            if (s.x < 0) s.x = W; if (s.x > W) s.x = 0;
+            if (s.y < 0) s.y = H; if (s.y > H) s.y = 0;
+            drawSparkle(s.x, s.y, s.r, s.rgb, a);
+          });
+
+          // 3. Draw crystal gems (foreground)
+          gems.forEach(function(g) {
+            g.pulse += g.pulseSpd;
+            var a = g.alpha * (0.75 + 0.25 * Math.sin(g.pulse));
+            g.rot += g.rotSpeed;
+            g.x += g.vx; g.y += g.vy;
+            if (g.x < -80) g.x = W + 80;
+            if (g.x > W + 80) g.x = -80;
+            if (g.y < -80) g.y = H + 80;
+            if (g.y > H + 80) g.y = -80;
+            drawCrystal(g.x, g.y, g.size, g.rot, a, g.hue);
+          });
+
+          requestAnimationFrame(animate);
+        }
+        animate();
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var footer = document.getElementById('fbt-footer');
+        var done = false;
+
+        function isHome() {
+          var p = window.location.pathname;
+          return p === '/' || p === '';
+        }
+
+        // Find the deepest scrollable container that is NOT the window/body.
+        // This is the React app's inner scroll pane — cards are direct children of it.
+        function findScrollContainer(root) {
+          var queue = [root];
+          while (queue.length) {
+            var el = queue.shift();
+            var cs = window.getComputedStyle(el);
+            var oy = cs.overflowY;
+            if ((oy === 'auto' || oy === 'scroll') && el !== document.body && el !== document.documentElement) {
+              return el;
+            }
+            for (var i = 0; i < el.children.length; i++) queue.push(el.children[i]);
+          }
+          return null;
+        }
+
+        function inject() {
+          if (done || !isHome()) return;
+          var root = document.getElementById('root');
+          if (!root || !root.firstChild) return;
+
+          // Get the scroll container — cards are DIRECT children of this
+          var scroller = findScrollContainer(root) || root.firstChild;
+
+          // Double-check: footer must not already be the last child
+          if (scroller.lastChild === footer) { done = true; return; }
+
+          scroller.appendChild(footer);
+          footer.style.display = 'block';
+          done = true;
+        }
+
+        function onNav() {
+          if (!isHome()) {
+            if (footer) footer.style.display = 'none';
+            // Move footer back to body so we can re-inject on next visit
+            document.body.appendChild(footer);
+            done = false;
+          } else {
+            done = false;
+            setTimeout(inject, 100);
+          }
+        }
+
+        // ── Auth page patches ──────────────────────────────────────────
+        var backBtn = document.getElementById('fbt-back-btn');
+        var authDone = false;
+
+        var LOGIN_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
+        var REGISTER_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>';
+
+        function patchAuthPage() {
+          var path = window.location.pathname;
+          var isLogin = path === '/login';
+          var isRegister = path === '/register';
+          var isAuth = isLogin || isRegister;
+
+          // Show/hide back button
+          if (backBtn) backBtn.style.display = isAuth ? 'flex' : 'none';
+
+          if (!isAuth) { authDone = false; return; }
+          if (authDone) return;
+
+          // Hide anime image, insert icon in its place
+          var imgs = document.querySelectorAll('img');
+          for (var i = 0; i < imgs.length; i++) {
+            if (imgs[i].src && imgs[i].src.indexOf('hero-character') !== -1) {
+              var img = imgs[i];
+              img.style.display = 'none';
+              if (!document.getElementById('fbt-auth-icon')) {
+                var wrap = document.createElement('div');
+                wrap.id = 'fbt-auth-icon';
+                wrap.style.cssText = 'width:80px;height:80px;border-radius:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 4px;background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);box-shadow:0 0 32px rgba(99,102,241,0.3)';
+                wrap.innerHTML = isLogin ? LOGIN_ICON : REGISTER_ICON;
+                img.parentElement.insertBefore(wrap, img);
+              }
+              authDone = true;
+              break;
+            }
+          }
+        }
+
+        function onAllNav() {
+          onNav();
+          authDone = false;
+          var el = document.getElementById('fbt-auth-icon');
+          if (el) el.remove();
+          setTimeout(patchAuthPage, 150);
+        }
+
+        // Single unified pushState/popstate hook
+        var _push = history.pushState.bind(history);
+        history.pushState = function () { _push.apply(history, arguments); setTimeout(onAllNav, 80); };
+        window.addEventListener('popstate', function () { setTimeout(onAllNav, 80); });
+
+        var tries = 0;
+        function poll() {
+          inject();
+          if (!done && ++tries < 50) setTimeout(poll, 200);
+        }
+        setTimeout(poll, 500);
+
+        var authTries = 0;
+        function pollAuth() {
+          patchAuthPage();
+          if (!authDone && ++authTries < 40) setTimeout(pollAuth, 200);
+        }
+        setTimeout(pollAuth, 400);
+        // ──────────────────────────────────────────────────────────────
+      })();
+    </script>
+  </body>
+</html>
