@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Stamp dates and remove expired lines
-        run: python3 .github/scripts/expire_approvals.py
+          run: python3 .github/workflows/expire_approvals.py
 
       - name: Commit changes
         run: |
